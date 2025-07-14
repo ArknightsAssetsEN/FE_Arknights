@@ -1,26 +1,22 @@
 import React from 'react'
 import { Navigate, useRoutes } from 'react-router-dom'
 import Home from '../Pages/Home'
+import LayoutMain from '../Layouts/LayoutMain'
+
 
 export default function Router() {
     return useRoutes([
         {
             path: "/",
-            element: <Home />,
+            element: <Navigate to="/map/home"/>,
         }, 
-        // {
-        //     path: "/page",
-        //     element: <Layout/>,
-        //     children: [
-        //         { path: "home", element: <Home /> },
-        //         { path: "history", element: <History /> },
-        //         { path: "contact", element: <ContactPage /> },
-        //         { path: "about", element: <About /> },
-        //         { path: "detailLink", element: <DetailLink/> },
-        //         { path: "notfound", element: <PageNotFound/> },
-        //         { path: "*", element: <Navigate to="/page/notfound" /> }
-        //     ],
-        // },
+        {
+            path: "/map",
+            element: <LayoutMain/>,
+            children: [
+                { path: "home", element: <Home /> },
+            ],
+        },
         // {
         //     path: "/login",
         //     element: <Login/>,

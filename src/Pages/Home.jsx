@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
+import Header from '../Components/Header';
 
 export default function Home() {
 
     const [mapName, setMapName] = useState([]);
 
     useEffect(() => {
+        console.log("Base URL:", import.meta.env.VITE_Arknights_URL);
         fetch(import.meta.env.VITE_Arknights_URL + '/api/maps/get_all_ids')
             .then(response => response.json())
             .then(data => {
                 setMapName(data);
+                for (const item in data) {
+
+                }
                 console.log('Home data:', data);
             })
             .catch(error => {
@@ -18,14 +23,22 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-            <h1 className="text-4xl font-bold mb-8">Welcome to Arknights</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {mapName.map((map, index) => (
-                    <div key={index} className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-                        <h2 className="text-xl font-semibold">{map}</h2>
-                    </div>
-                ))}
+        <div>
+            {/* <Header /> */}
+            <div className="flex items-center bg-gray-100 p-1">
+                <h1 className="text-4xl font-bold">Map: </h1>
+                <select className="p-2 border rounded">
+                    {mapName.map((map, index) => {
+                        // const code = map.id.split('_');
+                        // const code = map.id.replaceAll('_', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+                        const code = map.id.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+                        return (
+                            <option key={index} value={map.id || map}>
+                                {code}
+                            </option>
+                        )
+                    })}
+                </select>
             </div>
         </div>
     );
