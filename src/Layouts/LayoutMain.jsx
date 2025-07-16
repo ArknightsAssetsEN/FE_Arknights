@@ -8,7 +8,7 @@ export default function LayoutMain() {
     //  bg-gradient-to-b from-white to-blue-200
     <div className='flex flex-col min-h-screen'>
       <ArknightsProvider>
-        <Header/>
+        {/* <Header/> */}
         
 
         <div className='flex-grow'>
