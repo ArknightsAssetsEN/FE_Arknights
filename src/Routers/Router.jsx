@@ -2,6 +2,7 @@ import React from 'react'
 import { Navigate, useRoutes } from 'react-router-dom'
 import Home from '../Pages/Home'
 import LayoutMain from '../Layouts/LayoutMain'
+import Character from '../Pages/Character'
 
 
 export default function Router() {
@@ -21,7 +22,7 @@ export default function Router() {
             path: "/recruiment",
             element: <LayoutMain/>,
             children: [
-                { path: "home", element: <Home /> },
+                { path: "home", element: <Character /> },
             ],
         },
         {
