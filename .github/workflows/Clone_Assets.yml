@@ -35,9 +35,9 @@ jobs:
 
       - name: Copy en_US to target repo
         run: |
-          rm -rf target/src/assets/data
-          mkdir -p target/src/assets/data
-          cp -r source/data/* target/src/assets/data
+          rm -rf target/public/assets/data
+          mkdir -p target/public/assets/data
+          cp -r source/data/* target/public/assets/data
 
       - name: Commit and push to private repo
         run: |
