@@ -12,7 +12,7 @@ export default function Character() {
             </div>
 
             <div className="flex justify-center items-center mt-4" >
-                <Character />
+                <img src="./../assets/data/battle/char_002_amiya/char_002_amiya.png" alt="" className='w-[60px]'/>
             </div>
         </div>
     );
