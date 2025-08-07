@@ -9,7 +9,7 @@ export default function Router() {
     return useRoutes([
         {
             path: "/",
-            element: <Navigate to="/map/home"/>,
+            element: <Navigate to="/view"/>,
         }, 
         {
             path: "/map",
@@ -32,7 +32,10 @@ export default function Router() {
                 { path: "home", element: <Home /> },
             ],
         },
-  
+        {
+            path: "/view",
+            element: <Character/>,
+        },
         // { path: "*", element: <DynamicPage /> }
     ])
 }
