@@ -1,0 +1,50 @@
+name: Clone Assets
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  fetch-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Free Disk Space (Optional)
+        uses: jlumbroso/free-disk-space@main
+        with:
+          dotnet: false
+          large-packages: false
+
+      - name: Install python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Clone source repo
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+        run: |
+          git clone --depth=1 https://x-access-token:${TOKEN}@github.com/ArknightsAssetsEN/UploadAssets.git source
+
+      - name: Clone target repo (private)
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+        run: |
+          git clone https://x-access-token:${TOKEN}@github.com/ArknightsAssetsEN/FE_Arknights.git target
+
+      - name: Copy en_US to target repo
+        run: |
+          rm -rf target/src/assets/data
+          mkdir -p target/src/assets/data
+          cp -r source/data/* target/src/assets/data
+
+      - name: Commit and push to private repo
+        run: |
+          cd target
+          git config user.name "[BOT] Gnoodd"
+          git config user.email "Gnoodd@bot.com"
+
+          git add .
+          git commit -m "🔄 Auto update" || echo "No changes to commit"
+          git push
