@@ -6,7 +6,7 @@ import { Spine } from '@pixi-spine/all-3.8';
 export default function Character() {
     const navigate = useNavigate();
     const [characterData, setCharacterData] = useState([]);
-    const [characterSelect, setCharacterSelect] = useState("");
+    const [characterSelect, setCharacterSelect] = useState("char_010_chen");
     const [character, setCharacter] = useState({});
     // const pixiApp = new Application();
 
