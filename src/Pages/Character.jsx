@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Application, Assets } from 'pixi.js';
-import { Spine } from '@esotericsoftware/spine-pixi-v8';
+import { Spine } from '@pixi-spine/all-3.8';
 
 export default function Character() {
     const navigate = useNavigate();
     const [characterData, setCharacterData] = useState([]);
     const [characterSelect, setCharacterSelect] = useState("");
     const [character, setCharacter] = useState({});
-    const pixiApp = new Application();
+    // const pixiApp = new Application();
 
     useEffect(() => {
         fetch(import.meta.env.VITE_Arknights_URL + '/api/characters/findAllForGacha')
@@ -22,8 +22,8 @@ export default function Character() {
             });
     }, []);
 
-    const draw_view = async () => {
-        await pixiApp.init({
+    const draw_view = async (character) => {
+        const pixiApp = new Application({
             width: 800,
             height: 600,
             resolution: window.devicePixelRatio || 1,
@@ -35,31 +35,33 @@ export default function Character() {
         const container = document.getElementById("spine-container");
         if (container) {
             container.innerHTML = "";
-            container.appendChild(pixiApp.canvas);
+            container.appendChild(pixiApp.view);
         }
 
         // Assets.add({ alias: "skel_file", src: "/assets/data/battle/char_010_chen/char_010_chen.skel" });
         // Assets.add({ alias: "atlas_file", src: "/assets/data/battle/char_010_chen/char_010_chen.atlas" });
         // await Assets.load(["skel_file", "atlas_file"]);
 
-        Assets.add({ alias: "skel_file", src: "/assets/data/test/spineboy-pro.skel" });
-        Assets.add({ alias: "atlas_file", src: "/assets/data/test/spineboy-pma.atlas" });
-        await Assets.load(["skel_file", "atlas_file"]);
-
-        console.log("Assets loaded successfully", Assets.get("skel_file"), Assets.get("atlas_file"));
-        
-        const amiya = Spine.from({
-            atlas: "atlas_file",
-            skeleton: "skel_file",
-            scale: 0.5,
+        const spineData = await Assets.load({
+            src: "/assets/data/battle/" + character + "/" + character + ".skel",
+            // data: {
+            //     spineAtlasFile: "/assets/data/battle/char_010_chen/char_010_chen.atlas",
+            //     imagePath: "/assets/data/battle/char_010_chen/char_010_chen.png",
+            // },
+            loadParser: "spineBinaryData",
         });
+
+
+        const amiya = new Spine(spineData.spineData);
 
         amiya.state.data.defaultMix = 0.2;
 
         amiya.x = 800 / 2;
         amiya.y = 600 / 2 + amiya.getBounds().height / 2;
 
-        amiya.state.setAnimation(0, "run", true);
+        console.log(amiya.spineData.animations.map(a => a.name));
+
+        // amiya.state.setAnimation(0, "Attack", true);
 
         pixiApp.stage.addChild(amiya);
         
@@ -80,7 +82,7 @@ export default function Character() {
                         )
                     })}
                 </select>
-                <button className="p-2 bg-blue-500 text-white rounded ml-2" onClick={draw_view} />
+                <button className="p-2 bg-blue-500 text-white rounded ml-2" onClick={draw_view(characterSelect)} >Load Spine</button>
             </div>
 
             <div className="flex justify-center items-center mt-4" >
