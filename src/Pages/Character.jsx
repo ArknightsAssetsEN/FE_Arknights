@@ -44,10 +44,10 @@ export default function Character() {
 
         const spineData = await Assets.load({
             src: "/assets/data/battle/" + character + "/" + character + ".skel",
-            data: {
-                spineAtlasFile: "/assets/data/battle/" + character + "/" + character + ".atlas",
-                imagePath: "/assets/data/battle/" + character + "/" + character + "_full.png",
-            },
+            // data: {
+            //     spineAtlasFile: "/assets/data/battle/" + character + "/" + character + ".atlas",
+            //     imagePath: "/assets/data/battle/" + character + "/" + character + "_full.png",
+            // },
             loadParser: "spineBinaryData",
         });
 
