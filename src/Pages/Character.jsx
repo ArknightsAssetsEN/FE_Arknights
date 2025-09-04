@@ -24,8 +24,8 @@ export default function Character() {
 
     const draw_view = async (character) => {
         const pixiApp = new Application({
-            width: 800,
-            height: 600,
+            width: 200,
+            height: 400,
             resolution: window.devicePixelRatio || 1,
             autoDensity: true,
             backgroundColor: 0x2c3e50,
@@ -56,8 +56,8 @@ export default function Character() {
 
         amiya.state.data.defaultMix = 0.2;
 
-        amiya.x = 800 / 2;
-        amiya.y = 600 / 2 + amiya.getBounds().height / 2;
+        amiya.x = 200 / 2;
+        amiya.y = 400 / 2 + amiya.getBounds().height / 2;
 
         console.log(amiya.spineData.animations.map(a => a.name));
 
