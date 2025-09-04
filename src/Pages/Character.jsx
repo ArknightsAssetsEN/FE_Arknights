@@ -61,6 +61,9 @@ export default function Character() {
 
         console.log(amiya.spineData.animations.map(a => a.name));
 
+        if (amiya.spineData.animations.map(a => a.name))
+            amiya.state.setAnimation(0, amiya.spineData.animations.map(a => a.name)[0], true);
+
         // amiya.state.setAnimation(0, "Attack", true);
 
         pixiApp.stage.addChild(amiya);
