@@ -3,13 +3,14 @@ import { Navigate, useRoutes } from 'react-router-dom'
 import Home from '../Pages/Home'
 import LayoutMain from '../Layouts/LayoutMain'
 import Character from '../Pages/Character'
+import Menu from '../Pages/Menu'
 
 
 export default function Router() {
     return useRoutes([
         {
             path: "/",
-            element: <Navigate to="/view"/>,
+            element: <Navigate to="/menu"/>,
         }, 
         {
             path: "/map",
@@ -35,6 +36,10 @@ export default function Router() {
         {
             path: "/view",
             element: <Character/>,
+        },
+        {
+            path: "/menu",
+            element: <Menu/>,
         },
         // { path: "*", element: <DynamicPage /> }
     ])
