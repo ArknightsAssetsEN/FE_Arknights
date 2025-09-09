@@ -1,40 +1,21 @@
 import React from 'react'
 import { Navigate, useRoutes } from 'react-router-dom'
-import Home from '../Pages/Home'
 import LayoutMain from '../Layouts/LayoutMain'
-import Character from '../Pages/Character'
+import Menu from '../Pages/Menu'
 
 
 export default function Router() {
     return useRoutes([
         {
             path: "/",
-            element: <Navigate to="/view"/>,
+            element: <Navigate to="/menu/home" replace/>,
         }, 
         {
-            path: "/map",
+            path: "/menu",
             element: <LayoutMain/>,
             children: [
-                { path: "home", element: <Home /> },
+                { path: "home", element: <Menu /> },
             ],
-        },
-        {
-            path: "/recruiment",
-            element: <LayoutMain/>,
-            children: [
-                { path: "home", element: <Character /> },
-            ],
-        },
-        {
-            path: "/gacha",
-            element: <LayoutMain/>,
-            children: [
-                { path: "home", element: <Home /> },
-            ],
-        },
-        {
-            path: "/view",
-            element: <Character/>,
         },
         // { path: "*", element: <DynamicPage /> }
     ])
