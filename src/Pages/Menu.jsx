@@ -6,10 +6,10 @@ export default function Menu() {
     
 
     return (
-        <div>
-            <div className="flex items-center bg-gray-100 p-1">
+        <div className='h-screen flex justify-center items-center overflow-hidden'>
+            <div className="flex items-center p-1">
 
-                
+                {/* <span className="text-lg font-bold text-gray-800">Menu</span> */}
                 
             </div>
 

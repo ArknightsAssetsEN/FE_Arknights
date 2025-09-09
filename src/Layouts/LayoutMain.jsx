@@ -8,11 +8,12 @@ export default function LayoutMain() {
     //  bg-gradient-to-b from-white to-blue-200
     <div className='flex flex-col min-h-screen'>
       <ArknightsProvider>
-        <Header/>
-        
+        <div className='h-screen overflow-hidden'>
+          <Header/>
 
-        <div className='flex-grow'>
-          <Outlet/>
+          <div>
+            <Outlet/>
+          </div>
         </div>
       </ArknightsProvider>
     </div>
