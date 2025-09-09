@@ -1,7 +1,8 @@
 # Arknight Web App 
 
 `https://fe-arknights.vercel.app/map/home`
-`Alpha ... ... ... ... ... ...`
+`09-09-2025`
+
 
 
 
