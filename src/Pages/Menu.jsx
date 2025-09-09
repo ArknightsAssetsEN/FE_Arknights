@@ -85,16 +85,14 @@ export default function Menu() {
             {/* Background image */}
             {character?.files?.length > 0 && (
                 <div
-                className="absolute top-1/4 right-1/8 md:w-1/2 md:h-1/4 bg-cover bg-center -z-0 opacity-70"
+                className="absolute -z-0 opacity-70 bg-contain bg-no-repeat bg-center w-full h-full top-20 md:w-4/5 md:h-4/5 md:top-1/8 md:left-1/4"
                 style={{
-                    width: "400px",
-                    height: "600px",
                     backgroundImage: `url(${import.meta.env.VITE_Arknights_Data}/${character.files[0]})`,
                 }}
                 />
             )}
 
-            <div className="relative flex flex-col items-center p-1 mt-36">
+            <div className="relative flex flex-col items-center p-1 mt-8 md:mt-60">
                 <Logo size="text-5xl"/>
                 <button
                     className="bg-blue-400 hover:bg-blue-600 font-bold py-2 px-4 rounded cursor-pointer"
