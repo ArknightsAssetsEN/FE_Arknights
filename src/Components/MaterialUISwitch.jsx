@@ -20,7 +20,7 @@ export const MaterialUISwitch = styled(Switch)(({ theme }) => ({
       },
       '& + .MuiSwitch-track': {
         opacity: 1,
-        backgroundColor: '#aab4be',
+        backgroundColor: '#60A5FA',
         ...theme.applyStyles('dark', {
           backgroundColor: '#8796A5',
         }),
@@ -50,7 +50,7 @@ export const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
   '& .MuiSwitch-track': {
     opacity: 1,
-    backgroundColor: '#aab4be',
+    backgroundColor: '#60A5FA',
     borderRadius: 20 / 2,
     ...theme.applyStyles('dark', {
       backgroundColor: '#8796A5',         
