@@ -85,7 +85,7 @@ export default function Menu() {
             {/* Background image */}
             {character?.files?.length > 0 && (
                 <div
-                className="absolute bottom-48 right-96 bg-cover bg-center -z-0 opacity-70"
+                className="absolute top-1/4 right-1/8 md:w-1/2 md:h-1/4 bg-cover bg-center -z-0 opacity-70"
                 style={{
                     width: "400px",
                     height: "600px",
